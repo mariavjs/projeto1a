@@ -38,7 +38,7 @@ def index(request):
     ]
     notes = '\n'.join(notes_li)
 
-    return load_template('index.html').format(notes=notes).encode()
+    return load_template('projeto1a/docs/index.html').format(notes=notes).encode()
 
 
 
