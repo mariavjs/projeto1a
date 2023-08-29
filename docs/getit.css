@@ -170,6 +170,17 @@ Algumas informações úteis e dicas:
    position: relative;
    overflow: hidden; 
  }
+
+ .card-img{
+  width: 10px;
+  height: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 7px;
+  margin-right: 7px;
+ }
  
  .card-title {
    font-size: 20px;

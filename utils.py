@@ -25,7 +25,7 @@ def load_data(arq):
 
 
 def load_template(template):
-    path = "templates/{template}".format(template=template)
+    path = "docs/{template}".format(template=template)
     with open(path, "r") as arquivo:
 
         conteudo = arquivo.read()
