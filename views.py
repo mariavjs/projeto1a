@@ -1,6 +1,10 @@
-from utils import load_data, load_template
+from utils import *
 from urllib.parse import unquote_plus
 import json
+from database import *
+
+db = Database("./data/banco")
+
 
 def index(request):
     # A string de request sempre começa com o tipo da requisição (ex: GET, POST)
@@ -17,29 +21,28 @@ def index(request):
         # requisição e devolve os parâmetros para desacoplar esta lógica.
         # Dica: use o método split da string e a função unquote_plus
         for chave_valor in corpo.split('&'):
-            titulo1, titulo2, descricao1, descricao2 = corpo.split("=")
-            titulo2, descricao2 = unquote_plus(chave_valor, "utf-8")
 
-            params[titulo1] = titulo2
-            params[descricao1] = descricao2
+            chave, valor = chave_valor.split("=")
+            params[unquote_plus(chave)] = unquote_plus(valor)
+            
+        titulo = params.get('titulo', '')
+        descricao = params.get('detalhes', '')
 
-            with open("note.json", "w") as outfile:
-                json.dump(params, outfile)
+        #add_note(novo)
+        db.add(Note(title=titulo, content=descricao))
 
+        return build_response(code=303, reason='See Other', headers='Location: /')
 
-    # O RESTO DO CÓDIGO DA FUNÇÃO index CONTINUA DAQUI PARA BAIXO...
-    # Cria uma lista de <li>'s para cada anotação
     
-    # Se tiver curiosidade: https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions
     note_template = load_template('components/note.html')
+
     notes_li = [
-        note_template.format(title=dados['titulo'], details=dados['detalhes'])
-        for dados in load_data('notes.json')
+        note_template.format(title=dado.title, content=dado.content)
+        for dado in db.get_all()
     ]
+
     notes = '\n'.join(notes_li)
+    print('chaguei aqui')
+    print(notes)
 
-    return load_template('docs/index.html').format(notes=notes).encode()
-
-
-
-
+    return build_response(body=load_template('index.html').format(notes=notes))
