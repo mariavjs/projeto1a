@@ -183,6 +183,10 @@ Algumas informações úteis e dicas:
  } */
  
  .action-button{
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
   background-size: cover;
   background-repeat: no-repeat;
   padding: 0;
@@ -194,16 +198,20 @@ Algumas informações úteis e dicas:
  }
 
 .delete-button{
-  display: block;
-  justify-content: end;
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
   width: 50%;
   height: 100%;
   background-image: url('docs/img/lixo.png');
  }
 
 .edit-button{
-  display: block;
-  justify-content: end;
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
   width: 50%;
   height: 100%;
   background-image: url('docs/img/editar.png');
