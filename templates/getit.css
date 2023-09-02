@@ -202,15 +202,18 @@ Algumas informações úteis e dicas:
   right: 5px; 
   width: 20px; 
   height: 20px; 
+  background-color: transparent;
+  border-color: transparent;
   background-image: url('docs/img/lixo.png');
  }
 
 .edit-button{
-  
   top: 5px; 
   right: 5px; 
   width: 20px; 
   height: 20px; 
+  background-color: transparent;
+  border-color: transparent;
   background-image: url('docs/img/editar.png');
  }
 

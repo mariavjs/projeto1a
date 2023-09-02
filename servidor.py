@@ -34,9 +34,9 @@ while True:
     #     id = int(route.split('/')[-1])
     #     response = edit(request,id)
 
-    elif route.startswith('delete'):
-        id = int(route.split('/')[-1])
-        response = delete(request,id)
+    # elif route.startswith('delete'):
+    #     id = int(route.split('/')[-1])
+    #     response = delete(request,id)
 
     else:
         response = build_response(code=404, reason='not found')
